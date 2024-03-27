@@ -65,7 +65,7 @@ def main():
     esoc = page.locator('//*[@id="login-acoes"]/div[2]/p/button').click()
     time.sleep(3)
     
-    e = page.locator('//*[@id="login-certificate"]').bounding_box()
+    e = page.locator('//*[@id="login-certificate"]')
     url = page.url
     time.sleep(4)
     #Move o mouse randomicamente para emular comportamento humano
@@ -79,7 +79,7 @@ def main():
     page.evaluate('document.getElementById("operation-field").setAttribute("name", "operation");')
     page.evaluate('document.getElementById("operation-field").setAttribute("value", "login-certificate");')
     page.evaluate("document.getElementById('loginData').setAttribute('action','https://certificado.sso.acesso.gov.br/login?client_id=login.esocial.gov.br')")
-    page.mouse.click(e["x"], e["y"])
+    e.click()
     time.sleep(5)
     if url == page.url:
         solveHCaptcha(page)
